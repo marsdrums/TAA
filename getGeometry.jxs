@@ -1,0 +1,94 @@
+<jittershader name="fill-flat-quads">
+	<description>Default Shader </description>
+	<param name="pos" type="vec3" state="POSITION" />
+	<param name="nor" type="vec3" state="NORMAL" />
+	<param name="MVP" 	type="mat4" state="MODELVIEW_PROJECTION_MATRIX" />
+	<param name="prevMVP" type="mat4" state="PREV_MODELVIEW_PROJECTION_MATRIX" />
+	<param name="MV"	type="mat4" state="MODELVIEW_MATRIX" />
+	<param name="M" 	type="mat4" state="WORLD_MATRIX" />
+	<param name="NM"	type="mat3" state="NORMAL_MATRIX" />
+	<param name="Vmat" 	type="mat4" state="VIEW_MATRIX" />
+	<param name="Pmat"  type="mat4" state="PROJECTION_MATRIX" />
+	<param name="eye" 	type="vec3" state="CAMERA_POSITION" />
+	<param name="far"  	type="float" state="FAR_CLIP" />
+	<param name="near"  type="float" state="NEAR_CLIP" />
+	<param name="color" type="vec4" state="COLOR" />
+	<language name="glsl" version="1.5">
+		<bind param="pos" program="vp" />
+		<bind param="nor" program="vp" />
+		<bind param="MVP" 	program="vp" />
+		<bind param="prevMVP" program="vp" />
+		<bind param="MV"	program="vp" />
+		<bind param="M" 	program="vp" />
+		<bind param="NM"	program="vp" />
+		<bind param="Vmat" 	program="fp" />
+		<bind param="Pmat" 	program="fp" />
+		<bind param="eye" 	program="fp" />
+		<bind param="far"   program="fp" />
+		<bind param="near"  program="fp" />
+		<bind param="color" program="vp" />
+		<program name="vp" type="vertex">
+<![CDATA[
+#version 330 core
+uniform mat4 MVP, MV, M, prevMVP;
+uniform mat3 NM;
+in vec3 pos, nor;
+in vec4 color;
+
+out jit_PerVertex {
+	smooth vec4 color;	
+	smooth vec3 nor;
+	smooth vec4 currScreenPos;
+	smooth vec4 prevScreenPos;
+	smooth vec3 pos;
+	smooth vec3 modelPos;
+} jit_out;
+
+void main() {	
+
+	jit_out.currScreenPos = MVP 	* vec4(pos, 1.);	
+	jit_out.prevScreenPos = prevMVP * vec4(pos, 1.);
+	gl_Position = jit_out.currScreenPos;	
+	jit_out.nor = (M * vec4(nor, 0.)).xyz;
+	jit_out.pos = (M * vec4(pos, 1.)).xyz;
+	jit_out.color = color;
+	jit_out.modelPos = pos;
+}
+]]>
+		</program>
+		<program name="fp" type="fragment">
+<![CDATA[
+#version 330 core
+
+in jit_PerVertex {
+	smooth vec4 color;
+	smooth vec3 nor;
+	smooth vec4 currScreenPos;
+	smooth vec4 prevScreenPos;
+	smooth vec3 pos;
+	smooth vec3 modelPos;
+} jit_in;
+
+layout (location = 0) out vec4 color;
+layout (location = 1) out vec4 velocity;
+
+void main() {
+
+	vec3 ligPos = vec3(1., 1., 0.);
+	vec3 L = normalize(ligPos - jit_in.pos);
+	float diff = max(dot(L, jit_in.nor), 0.);
+
+	vec3 pattern = mod(jit_in.modelPos.x, 0.2) > 0.1 ? vec3(1.) : vec3(0.);
+	pattern += mod(jit_in.modelPos.y, 0.2) > 0.1 ? vec3(1.) : vec3(0.);
+	pattern = mod(pattern, vec3(2.));
+
+	color = vec4(pattern * diff, 1.);
+
+	vec2 a = (jit_in.currScreenPos.xy / jit_in.currScreenPos.w) * 0.5 + 0.5;
+    vec2 b = (jit_in.prevScreenPos.xy / jit_in.prevScreenPos.w) * 0.5 + 0.5;
+	velocity = vec4(a - b, 0., 1.);
+}	
+]]>
+		</program>
+	</language>
+</jittershader>
