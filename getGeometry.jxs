@@ -127,7 +127,7 @@ void main() {
 	vec3 dif = max(dot(L, jit_in.nor), 0.) * vec3(1., 0.9, 0.7)*5.;
 
 
-	float intervallo = 0.3;
+	float intervallo = 0.2;
 	vec3 pattern = mod(jit_in.modelPos.x, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
 	pattern += mod(jit_in.modelPos.y, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
 	//pattern += mod(jit_in.modelPos.z, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
