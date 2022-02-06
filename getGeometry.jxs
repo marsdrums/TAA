@@ -16,6 +16,7 @@
 	<param name="viewPort" type="vec2" state="VIEWPORT" />
 	<param name="time" type="float" default="0." />
 	<param name="eye" type="vec3" state="CAMERA_POSITION" />
+	<param name="grid" type="float" default="0.2" />
 	<language name="glsl" version="1.5">
 		<bind param="pos" program="vp" />
 		<bind param="nor" program="vp" />
@@ -33,6 +34,7 @@
 		<bind param="viewPort" program="vp" />
 		<bind param="time" program="vp" />
 		<bind param="eye" program="fp" />
+		<bind param="grid" program="fp" />
 		<program name="vp" type="vertex">
 <![CDATA[
 #version 330 core
@@ -50,6 +52,7 @@ out jit_PerVertex {
 	smooth vec4 prevScreenPos;
 	smooth vec3 pos;
 	smooth vec3 modelPos;
+	smooth vec3 modelNor;
 } jit_out;
 
 vec2 getJitter(int time){
@@ -74,6 +77,25 @@ vec2 getJitter(int time){
 
 	return ((halton[time%16] - vec2(0.5)) / viewPort) * 2.;
 }
+
+/*
+float Halton(int b, int i)
+{
+    float r = 0.0;
+    float f = 1.0;
+    while (i > 0) {
+        f = f / float(b);
+        r = r + f * float(i % b);
+        i = int(floor(float(i) / float(b)));
+    }
+    return r;
+}
+vec2 getJitter(int i)
+{
+	i = i%64;
+    return ((vec2(Halton(2, i), Halton(3, i)) - vec2(0.5)) / viewPort)*2.;
+}
+*/
 void main() {	
 
 	jit_out.currScreenPos = MVP 	* vec4(pos, 1.);	
@@ -86,6 +108,7 @@ void main() {
 	jit_out.pos = (M * vec4(pos, 1.)).xyz;
 	jit_out.color = color;
 	jit_out.modelPos = pos;
+	jit_out.modelNor = nor;
 }
 ]]>
 		</program>
@@ -100,12 +123,14 @@ in jit_PerVertex {
 	smooth vec4 prevScreenPos;
 	smooth vec3 pos;
 	smooth vec3 modelPos;
+	smooth vec3 modelNor;
 } jit_in;
 
 layout (location = 0) out vec4 color;
 layout (location = 1) out vec4 velocity;
 
 uniform vec3 eye;
+uniform float grid;
 
 vec2 getVelocity(vec4 newPos, vec4 oldPos){
 
@@ -120,20 +145,28 @@ vec2 getVelocity(vec4 newPos, vec4 oldPos){
     return (newPos - oldPos).xy;
 
 }
+float getPattern(float interval){
 
+	vec3	pos = jit_in.modelPos;
+	vec3 	nor = jit_in.modelNor;
+
+	vec3 	k = normalize(pow(abs(nor), vec3(18.)));
+	vec2 	Xuv = pos.yz;
+	vec2 	Yuv = pos.xz;
+	vec2 	Zuv = pos.xy;
+
+	float 	X = k.x * mod((mod(jit_in.modelPos.y, interval) > interval*0.5 ? 1. : 0. ) + (mod(jit_in.modelPos.z, interval) > interval*0.5 ? 1. : 0. ), 2.);
+	float 	Y = k.y * mod((mod(jit_in.modelPos.x, interval) > interval*0.5 ? 1. : 0. ) + (mod(jit_in.modelPos.z, interval) > interval*0.5 ? 1. : 0. ), 2.);
+	float 	Z = k.z * mod((mod(jit_in.modelPos.x, interval) > interval*0.5 ? 1. : 0. ) + (mod(jit_in.modelPos.y, interval) > interval*0.5 ? 1. : 0. ), 2.);
+	return 	(X+Y+Z)/(k.x+k.y+k.z);
+}
 void main() {
 
 	vec3 L = normalize(vec3(15., -5., 2.));
 	vec3 dif = max(dot(L, jit_in.nor), 0.) * vec3(1., 0.9, 0.7)*5.;
 
-
-	float intervallo = 0.2;
-	vec3 pattern = mod(jit_in.modelPos.x, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
-	pattern += mod(jit_in.modelPos.y, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
-	//pattern += mod(jit_in.modelPos.z, intervallo) > intervallo*0.5 ? vec3(1.) : vec3(0.);
-	pattern = mod(pattern, vec3(2.));
-	pattern *= 0.4;
-	pattern += vec3(0.01);
+	vec3 pattern = vec3(0.4 * getPattern(grid));
+	pattern += vec3(0.03);
 
 	float dome = max(jit_in.nor.y, 0.);
 	//dome = smoothstep(0.2, 0.5, dome);

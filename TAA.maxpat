@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1099.0, 267.0, 913.0, 1070.0 ],
+		"rect" : [ 1099.0, 267.0, 1043.0, 1070.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,11 +40,48 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 804.0, 206.0, 87.0, 22.0 ],
+					"text" : "loadmess 0.06"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-23",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 804.0, 237.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 804.0, 264.0, 113.0, 22.0 ],
+					"text" : "prepend param grid"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-34",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 267.0, 94.0, 103.0, 20.0 ],
+					"patching_rect" : [ 253.5, 94.0, 103.0, 20.0 ],
 					"text" : "try a different size"
 				}
 
@@ -57,7 +94,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 191.5, 131.0, 90.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"text" : "size 1000 1000"
 				}
 
@@ -105,8 +141,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 593.0, 179.0, 365.0, 22.0 ],
-					"text" : "jit.gl.plato @shader getGeometry @position 0. 0. -2. @shape icosa"
+					"patching_rect" : [ 589.0, 175.0, 481.0, 22.0 ],
+					"text" : "jit.gl.gridshape @shader getGeometry @position 0. 0. -2. @shape sphere @dim 100 100"
 				}
 
 			}
@@ -117,7 +153,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 82.0, 233.0, 43.0, 22.0 ],
+					"patching_rect" : [ 648.0, 214.0, 43.0, 22.0 ],
 					"text" : "r bang"
 				}
 
@@ -175,8 +211,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 186.0, 848.0, 300.0, 22.0 ],
-					"text" : "jit.gl.text2d node @gl_color 0 1 0 1 @position 0.7 0.5 0"
+					"patching_rect" : [ 186.0, 848.0, 464.0, 22.0 ],
+					"text" : "jit.gl.text2d node @gl_color 0 1 0 1 @position 0.7 0.5 0 @depth_enable 0 @layer 101"
 				}
 
 			}
@@ -199,8 +235,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 179.0, 749.0, 304.0, 22.0 ],
-					"text" : "jit.gl.text2d node @gl_color 1 0 0 1 @position -0.7 0.5 0"
+					"patching_rect" : [ 179.0, 749.0, 458.0, 22.0 ],
+					"text" : "jit.gl.text2d node @gl_color 1 0 0 1 @position -0.7 0.5 @depth_enable 0 @layer 100"
 				}
 
 			}
@@ -626,7 +662,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1023.0, 46.0, 35.0, 22.0 ],
+					"patching_rect" : [ 748.0, 98.0, 35.0, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -638,7 +674,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 978.0, 113.0, 69.0, 22.0 ],
+					"patching_rect" : [ 748.0, 131.0, 69.0, 22.0 ],
 					"text" : "jit.gl.handle"
 				}
 
@@ -650,7 +686,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 82.0, 294.0, 116.0, 22.0 ],
+					"patching_rect" : [ 648.0, 275.0, 116.0, 22.0 ],
 					"text" : "prepend param time"
 				}
 
@@ -662,7 +698,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "", "", "int" ],
-					"patching_rect" : [ 82.0, 264.0, 61.0, 22.0 ],
+					"patching_rect" : [ 648.0, 245.0, 61.0, 22.0 ],
 					"text" : "counter"
 				}
 
@@ -805,7 +841,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 559.0, 320.0, 309.0, 22.0 ],
+					"patching_rect" : [ 648.0, 319.0, 309.0, 22.0 ],
 					"text" : "jit.gl.shader @name getGeometry @file getGeometry.jxs"
 				}
 
@@ -854,7 +890,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 723.0, 131.0, 150.0, 22.0 ]
+					"patching_rect" : [ 825.0, 131.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -972,6 +1008,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-25", 0 ]
 				}
@@ -995,6 +1045,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
