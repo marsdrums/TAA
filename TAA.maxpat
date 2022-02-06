@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1902.0, 371.0, 1043.0, 1070.0 ],
+		"rect" : [ 1463.0, 280.0, 1043.0, 1070.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -421,8 +421,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 589.0, 175.0, 481.0, 22.0 ],
-					"text" : "jit.gl.gridshape @shader getGeometry @position 0. 0. -2. @shape sphere @dim 100 100"
+					"patching_rect" : [ 589.0, 175.0, 471.0, 22.0 ],
+					"text" : "jit.gl.gridshape @shader getGeometry @position 0. 0. -2. @shape torus @dim 100 100"
 				}
 
 			}
