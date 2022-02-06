@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1099.0, 267.0, 1043.0, 1070.0 ],
+		"rect" : [ 1481.0, 219.0, 1043.0, 1070.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -164,7 +164,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 301.5, 215.0, 45.0, 22.0 ],
+					"patching_rect" : [ 151.0, 245.0, 45.0, 22.0 ],
 					"text" : "s bang"
 				}
 
@@ -175,7 +175,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 73.0, 15.0, 150.0, 20.0 ],
+					"patching_rect" : [ 121.5, 9.0, 59.0, 20.0 ],
 					"text" : "1) enable"
 				}
 
@@ -745,7 +745,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_gl_texture", "" ],
-					"patching_rect" : [ 589.0, 424.0, 234.0, 22.0 ],
+					"patching_rect" : [ 589.0, 432.0, 234.0, 22.0 ],
 					"text" : "jit.gl.texture @rectangle 0 @name velocity"
 				}
 
@@ -757,7 +757,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 589.0, 389.0, 39.0, 22.0 ],
+					"patching_rect" : [ 589.0, 397.0, 39.0, 22.0 ],
 					"text" : "$1 $3"
 				}
 
@@ -854,18 +854,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 47.0, 13.0, 24.0, 24.0 ]
+					"patching_rect" : [ 95.5, 7.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
+					"linecount" : 4,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
-					"patching_rect" : [ 94.5, 175.0, 390.0, 22.0 ],
+					"patching_rect" : [ 94.5, 175.0, 132.0, 64.0 ],
 					"text" : "jit.world @erase_color 1 1 1 1 @size 1000 800 @displaylink 1 @fps 60."
 				}
 

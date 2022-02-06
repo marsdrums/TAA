@@ -78,24 +78,6 @@ vec2 getJitter(int time){
 	return ((halton[time%16] - vec2(0.5)) / viewPort) * 2.;
 }
 
-/*
-float Halton(int b, int i)
-{
-    float r = 0.0;
-    float f = 1.0;
-    while (i > 0) {
-        f = f / float(b);
-        r = r + f * float(i % b);
-        i = int(floor(float(i) / float(b)));
-    }
-    return r;
-}
-vec2 getJitter(int i)
-{
-	i = i%64;
-    return ((vec2(Halton(2, i), Halton(3, i)) - vec2(0.5)) / viewPort)*2.;
-}
-*/
 void main() {	
 
 	jit_out.currScreenPos = MVP 	* vec4(pos, 1.);	
@@ -150,7 +132,7 @@ float getPattern(float interval){
 	vec3	pos = jit_in.modelPos;
 	vec3 	nor = jit_in.modelNor;
 
-	vec3 	k = normalize(pow(abs(nor), vec3(18.)));
+	vec3 	k = normalize(pow(abs(nor), vec3(40.)));
 	vec2 	Xuv = pos.yz;
 	vec2 	Yuv = pos.xz;
 	vec2 	Zuv = pos.xy;

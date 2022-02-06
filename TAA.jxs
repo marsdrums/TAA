@@ -57,71 +57,6 @@ uniform sampler2DRect prevCol;
 uniform sampler2DRect vel;
 uniform float time;
 
-
-
-// the shader is applied as a fullscreen pass(fragment shader), that implements temporal anti-aliasing
-
-// fullscreen UV coordinates. (0,0) in top-left, (1,1) in right-bottom for my engine. 
-//in vec2 fsUv;
-
-//out vec4 fragColor;
-
-//uniform int uFirstFrame;
-//uniform vec2 uPixelSize;
-
-/*
-In my engine, this is the HDR image that we get AFTER the deferred lighting has been done,
-and BEFORE the tonemapping is applied.
-hdrTex = HDR image of current frame
-histHdrTex = HDR image of previous frame.
-*/
-//uniform sampler2D hdrTex;
-//uniform sampler2D histHdrTex;
-
-// velocity texture. 
-//uniform sampler2D velocityTex;
-
-// halton low discrepancy sequence, from https://www.shadertoy.com/view/wdXSW8
-vec2 halton (int index)
-{
-    const vec2 coprimes = vec2(2.0, 3.0);
-    vec2 s = vec2(index, index);
-	vec4 a = vec4(1,1,0,0);
-    while (s.x > 0. && s.y > 0.)
-    {
-        a.xy = a.xy/coprimes;
-        a.zw += a.xy*mod(s, coprimes);
-        s = floor(s/coprimes);
-    }
-    return a.zw;
-}
-/*
-float halton(int i, int b)
-{
-    // Creates a halton sequence of values between 0 and 1.
-	//https://en.wikipedia.org/wiki/Halton_sequence
-	//Used for jittering based on a constant set of 2D points. 
-    float f = 1.0;
-    float r = 0.0;
-    while(i > 0)
-    {
-        f = f / float(b);
-        r = r + f * float(i % b);
-        i = i / b;
-    }
-    return r;
-}
-*/
-vec2 Jitter(vec2 fragCoord, int frame)
-{
-	return halton(int(fragCoord.x + fragCoord.x*fragCoord.y + 1 + time)) - vec2(0.5);
-	/*
-    // Get pixel offset for a given frame 
-    return vec2(
-    	halton(frame+int(fragCoord.x)+1,2),
-    	halton(frame+int(fragCoord.y)+1,3)) - 0.5;
-    */
-}
 void main() {
 	
     vec3 c;
@@ -132,7 +67,6 @@ void main() {
     } else {  
     */
     	vec2 currUV = jit_in.uv*jit_in.viewPort;
-    	//currUV += Jitter(jit_in.uv*jit_in.viewPort, int(time));
         vec3 neighbourhood[9] = vec3[] ( 	texture(currCol, currUV + vec2(-1, -1) ).xyz,
         									texture(currCol, currUV + vec2(+0, -1) ).xyz,
         									texture(currCol, currUV + vec2(+1, -1) ).xyz,
@@ -153,12 +87,9 @@ void main() {
         }
            
         vec2 vel = texture(vel, vec2(jit_in.uv.x, 1. - jit_in.uv.y)*jit_in.viewPort).rg;
-        		//vel *= jit_in.viewPort;
         vec2 histUv = vec2(jit_in.uv.x, 1. - jit_in.uv.y) - vel.xy;
-
         histUv *= jit_in.viewPort;
-        //histUv -= Jitter(jit_in.uv*jit_in.viewPort, int(time-1));     
-        // sample from history buffer, with neighbourhood clamping.  
+
         vec3 histSample = clamp(texture(prevCol, histUv).xyz, nmin, nmax);
         
         // blend factor
@@ -168,19 +99,10 @@ void main() {
         {
         	blend = 1.;
         }
-
-/*
-        bvec2 a = greaterThan(histUv, vec2(0.0, 0.0));
-        bvec2 b = lessThan(histUv, jit_in.viewPort);
-        // if history sample is outside screen, switch to aliased image as a fallback.
-        blend = any(bvec2(any(a), any(b))) ? 1.0 : blend;
- */      
+     
         vec3 curSample = neighbourhood[4];
-        // finally, blend current and clamped history sample.
         c = mix(histSample, curSample, vec3(blend)  );
-      
-    
-    //col = vec4(c.xyz, 1.0);
+
     col = vec4(c, 1.);
 }
 ]]>
