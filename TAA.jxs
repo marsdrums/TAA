@@ -87,7 +87,7 @@ void main() {
         }
            
         vec2 vel = texture(vel, vec2(jit_in.uv.x, 1. - jit_in.uv.y)*jit_in.viewPort).rg;
-        vec2 histUv = vec2(jit_in.uv.x, 1. - jit_in.uv.y) - vel.xy;
+        vec2 histUv = vec2(jit_in.uv.x, 1. - jit_in.uv.y) - vec2(vel.x, -vel.y);
         histUv *= jit_in.viewPort;
 
         vec3 histSample = clamp(texture(prevCol, histUv).xyz, nmin, nmax);

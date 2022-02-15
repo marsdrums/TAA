@@ -84,8 +84,6 @@ void main() {
 	jit_out.prevScreenPos = prevMVP * vec4(pos, 1.);
 	vec4 currJitter = vec4(getJitter(int(time))*jit_out.currScreenPos.w, 0., 0.);
 	gl_Position = jit_out.currScreenPos + currJitter;	
-	//vec4 prevJitter = vec4(getJitter(int(time - 1.))*jit_out.prevScreenPos.w, 0., 0.);
-	//jit_out.prevScreenPos -= prevJitter;
 	jit_out.nor = (M * vec4(nor, 0.)).xyz;
 	jit_out.pos = (M * vec4(pos, 1.)).xyz;
 	jit_out.color = color;
@@ -117,12 +115,12 @@ uniform float grid;
 vec2 getVelocity(vec4 newPos, vec4 oldPos){
 
     oldPos /= oldPos.w;
-    oldPos.xy = (oldPos.xy+1)/2.0;
-    oldPos.y = 1 - oldPos.y;
+    oldPos.xy = (oldPos.xy+1)*0.5;
+    //oldPos.y = 1 - oldPos.y;
     
     newPos /= newPos.w;
-    newPos.xy = (newPos.xy+1)/2.0;
-    newPos.y = 1 - newPos.y;
+    newPos.xy = (newPos.xy+1)*0.5;
+    //newPos.y = 1 - newPos.y;
     
     return (newPos - oldPos).xy;
 
