@@ -7,8 +7,8 @@
 	<param name="pos" type="vec3" state="POSITION" />
 	<param name="uv" type="vec2" state="TEXCOORD" />
 	<param name="viewPort" type="vec2" state="VIEWPORT" />
-	<param name="time" type="float" default="0." />
 	<param name="eye" type="vec3" state="CAMERA_POSITION" />
+	<param name="accumulate" type="float" default="0.9" />
 	<language name="glsl" version="1.5">
 		<bind param="currCol" program="fp" />
 		<bind param="prevCol" program="fp" />
@@ -17,8 +17,8 @@
 		<bind param="pos" program="vp" />
 		<bind param="uv" program="vp" />
 		<bind param="viewPort" program="vp" />
-		<bind param="time" program="fp" />
 		<bind param="eye" program="fp" />
+		<bind param="accumulate" program="fp" />
 		<program name="vp" type="vertex"  >
 
 <![CDATA[
@@ -52,58 +52,48 @@ in jit_PerVertex {
 } jit_in;
 layout (location = 0) out vec4 col;
 			
-uniform sampler2DRect currCol;
-uniform sampler2DRect prevCol;
-uniform sampler2DRect vel;
-uniform float time;
+uniform sampler2DRect currCol, prevCol, vel;
+uniform float accumulate;
 
 void main() {
-	
-    vec3 c;
-    /*
-    if(uFirstFrame == 1) {
-        // first frame, no blending at all.
-        c.xyz = texture(currCol, jit_in.uv).xyz;
-    } else {  
-    */
-    	vec2 currUV = jit_in.uv*jit_in.viewPort;
-        vec3 neighbourhood[9] = vec3[] ( 	texture(currCol, currUV + vec2(-1, -1) ).xyz,
-        									texture(currCol, currUV + vec2(+0, -1) ).xyz,
-        									texture(currCol, currUV + vec2(+1, -1) ).xyz,
-        									texture(currCol, currUV + vec2(-1, +0) ).xyz,
-        									texture(currCol, currUV + vec2(+0, +0) ).xyz,
-        									texture(currCol, currUV + vec2(+1, +0) ).xyz,
-        									texture(currCol, currUV + vec2(-1, +1) ).xyz,
-        									texture(currCol, currUV + vec2(+0, +1) ).xyz,
-        									texture(currCol, currUV + vec2(+1, +1) ).xyz
-        								);
-        
 
-        vec3 nmin = neighbourhood[0];
-        vec3 nmax = neighbourhood[0];   
-        for(int i = 1; i < 9; ++i) {
-            nmin = min(nmin, neighbourhood[i]);
-            nmax = max(nmax, neighbourhood[i]);
-        }
-           
-        vec2 vel = texture(vel, vec2(jit_in.uv.x, 1. - jit_in.uv.y)*jit_in.viewPort).rg;
-        vec2 histUv = vec2(jit_in.uv.x, 1. - jit_in.uv.y) - vec2(vel.x, -vel.y);
-        histUv *= jit_in.viewPort;
+	vec2 currUV = jit_in.uv*jit_in.viewPort;
+    vec3 neighbourhood[9] = vec3[] ( 	texture(currCol, currUV + vec2(-1, -1) ).xyz,
+    									texture(currCol, currUV + vec2(+0, -1) ).xyz,
+    									texture(currCol, currUV + vec2(+1, -1) ).xyz,
+    									texture(currCol, currUV + vec2(-1, +0) ).xyz,
+    									texture(currCol, currUV + vec2(+0, +0) ).xyz,
+    									texture(currCol, currUV + vec2(+1, +0) ).xyz,
+    									texture(currCol, currUV + vec2(-1, +1) ).xyz,
+    									texture(currCol, currUV + vec2(+0, +1) ).xyz,
+    									texture(currCol, currUV + vec2(+1, +1) ).xyz
+    								);
+    
+    vec3 nmin = neighbourhood[0];
+    vec3 nmax = neighbourhood[0];   
+    for(int i = 1; i < 9; ++i) {
+        nmin = min(nmin, neighbourhood[i]);
+        nmax = max(nmax, neighbourhood[i]);
+    }
+       
+    vec2 vel = texture(vel, vec2(jit_in.uv.x, jit_in.uv.y)*jit_in.viewPort).rg;
+    vec2 histUv = vec2(jit_in.uv.x, jit_in.uv.y) - vec2(vel.x, vel.y);
+    histUv *= jit_in.viewPort;
+    //histUv = (jit_in.uv + vel)*jit_in.viewPort;
 
-        vec3 histSample = clamp(texture(prevCol, histUv).xyz, nmin, nmax);
-        
-        // blend factor
-        float blend = 0.1;//1./6.;
-      
-        if(histUv.x <= 0. || histUv.x >= jit_in.viewPort.x || histUv.y <= 0. || histUv.y >= jit_in.viewPort.y)
-        {
-        	blend = 1.;
-        }
-     
-        vec3 curSample = neighbourhood[4];
-        c = mix(histSample, curSample, vec3(blend)  );
-
-    col = vec4(c, 1.);
+    vec3 histSample = clamp(texture(prevCol, histUv).xyz, nmin, nmax);
+    //histSample = texture(prevCol, histUv).xyz;
+    // blend factor
+    float blend = accumulate;//0.9;//1./6.;
+  
+    if(histUv.x <= 0. || histUv.x >= jit_in.viewPort.x || histUv.y <= 0. || histUv.y >= jit_in.viewPort.y)
+    {
+    	blend = 0;
+    }
+ 
+    vec3 curSample = neighbourhood[4];
+    col.rgb = mix(curSample, histSample, blend);
+    col.a = 1.;
 }
 ]]>
 </program>

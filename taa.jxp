@@ -1,0 +1,10 @@
+<jitterpass>
+	<pass name="taa">
+		<bind name="accumulate" param="accumulate" default="0.9" />
+		<subpass file="TAA.jxs">
+			<input source="COLOR" />
+			<input source="HISTORY" />
+			<input source="VELOCITY" />
+		</subpass>
+	</pass>
+</jitterpass>	

@@ -107,7 +107,8 @@ in jit_PerVertex {
 } jit_in;
 
 layout (location = 0) out vec4 color;
-layout (location = 1) out vec4 velocity;
+layout (location = 1) out vec4 dummy;
+layout (location = 2) out vec4 velocity;
 
 uniform vec3 eye;
 uniform float grid;
@@ -156,6 +157,7 @@ void main() {
 	color.rgb = pattern*(dif+vec3(amb));
 	color.a = 1.;
 	velocity = vec4(getVelocity(jit_in.currScreenPos, jit_in.prevScreenPos), 0., 1.);
+	dummy = vec4(1.);
 }	
 ]]>
 		</program>
