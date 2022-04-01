@@ -40,266 +40,119 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-49",
-					"maxclass" : "newobj",
+					"id" : "obj-38",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 350.0, 308.0, 70.0, 22.0 ],
-					"text" : "loadmess 4"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-48",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 815.0, 628.0, 70.0, 22.0 ],
-					"text" : "loadmess 0"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-29",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 975.0, 637.0, 70.0, 22.0 ],
-					"text" : "loadmess 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-33",
-					"items" : [ "none", ",", "Uniform", ",", "Interleaved", ",", "Vlachos", ",", "Vlachos", "triangle", ",", "Triangle", "noise" ],
-					"maxclass" : "umenu",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 975.0, 672.0, 139.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-34",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 653.0, 628.0, 70.0, 22.0 ],
-					"text" : "loadmess 2"
+					"numoutlets" : 0,
+					"patching_rect" : [ 235.5, 436.0, 163.0, 20.0 ],
+					"text" : "scale the chessboard pattern"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-36",
-					"items" : [ "none", ",", "lin2sRGB", "pow", ",", "lin2sRGB", "exact" ],
-					"maxclass" : "umenu",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 653.0, 672.0, 139.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 58.5, 716.0, 101.0, 20.0 ],
+					"text" : "feedback amount"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-37",
-					"items" : [ "none", ",", "Reinhard", ",", "Reinhard-Jodie", ",", "ACES", "film", ",", "Uncharted", 2 ],
-					"maxclass" : "umenu",
+					"id" : "obj-35",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 810.5, 672.0, 139.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 533.0, 807.0, 188.0, 20.0 ],
+					"text" : "taa requires jit.gl.pass @quality hi"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"attr" : "gamma_correction",
-					"id" : "obj-38",
-					"maxclass" : "attrui",
+					"id" : "obj-33",
+					"linecount" : 8,
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 653.0, 718.0, 139.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 543.0, 99.5, 347.0, 117.0 ],
+					"text" : "Temporal anti-aliasing (TAA) is a spatial anti-aliasing technique for computer-generated video that combines information from past frames and the current frame to remove jaggies in the current frame. In TAA, each pixel is sampled once per frame but in each frame the sample is at a different location within the pixel (sub-pixel jittering). Pixels sampled in past frames are blended with pixels sampled in the current frame to produce an anti-aliased image"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"attr" : "tonemapping",
-					"id" : "obj-41",
-					"maxclass" : "attrui",
+					"fontsize" : 29.518571304047992,
+					"id" : "obj-28",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 810.5, 718.0, 150.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 543.0, 55.677419354838719, 213.0, 40.0 ],
+					"text" : "TAA pass effect"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"attr" : "dithering",
-					"id" : "obj-43",
-					"maxclass" : "attrui",
+					"id" : "obj-19",
+					"linecount" : 3,
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 975.0, 718.0, 150.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "color_levels",
-					"id" : "obj-46",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 975.0, 746.0, 150.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-27",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "", "" ],
-					"patching_rect" : [ 406.0, 882.0, 244.0, 22.0 ],
-					"text" : "jit.gl.pass node @file gamma.jxp @quality hi"
+					"numoutlets" : 0,
+					"patching_rect" : [ 504.0, 861.5, 78.0, 48.0 ],
+					"text" : "gamma correction and dithering"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-15",
-					"maxclass" : "newobj",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 514.5, 317.0, 70.0, 22.0 ],
-					"text" : "loadmess 0"
+					"numoutlets" : 0,
+					"patching_rect" : [ 293.0, 661.0, 78.0, 20.0 ],
+					"text" : "tonemapping"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-5",
-					"items" : [ "none", ",", "Uniform", ",", "Interleaved", ",", "Vlachos", ",", "Vlachos", "triangle", ",", "Triangle", "noise" ],
-					"maxclass" : "umenu",
+					"linecount" : 5,
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 514.5, 352.0, 139.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 399.0, 705.5, 153.0, 75.0 ],
+					"text" : "If using temporal anti-aliasing with gamma correction, TAA should sit between tonemapping and gamma correction"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-70",
+					"id" : "obj-27",
+					"linecount" : 5,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 192.5, 308.0, 70.0, 22.0 ],
-					"text" : "loadmess 0"
+					"numoutlets" : 3,
+					"outlettype" : [ "jit_gl_texture", "", "" ],
+					"patching_rect" : [ 364.0, 847.0, 138.0, 77.0 ],
+					"text" : "jit.gl.pass node @file gamma.jxp @quality hi @gamma_correction 1 @tonemapping 0 @dithering 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-69",
+					"linecount" : 5,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_gl_texture", "", "" ],
-					"patching_rect" : [ 192.5, 622.0, 244.0, 22.0 ],
-					"text" : "jit.gl.pass node @file gamma.jxp @quality hi"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-58",
-					"items" : [ "none", ",", "lin2sRGB", "pow", ",", "lin2sRGB", "exact" ],
-					"maxclass" : "umenu",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 192.5, 352.0, 139.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-57",
-					"items" : [ "none", ",", "Reinhard", ",", "Reinhard-Jodie", ",", "ACES", "film", ",", "Uncharted", 2 ],
-					"maxclass" : "umenu",
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "int", "", "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 350.0, 352.0, 139.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "gamma_correction",
-					"id" : "obj-64",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 192.5, 398.0, 139.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "tonemapping",
-					"id" : "obj-67",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 350.0, 398.0, 150.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "dithering",
-					"id" : "obj-19",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 514.5, 398.0, 150.0, 22.0 ]
+					"patching_rect" : [ 150.0, 632.5, 141.0, 77.0 ],
+					"text" : "jit.gl.pass node @file gamma.jxp @quality hi @gamma_correction 0 @tonemapping 4 @dithering 0"
 				}
 
 			}
@@ -311,8 +164,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_gl_texture", "", "" ],
-					"patching_rect" : [ 305.0, 788.0, 221.0, 22.0 ],
-					"text" : "jit.gl.pass node @file taa.jxp @quality hi"
+					"patching_rect" : [ 211.0, 807.0, 325.0, 22.0 ],
+					"text" : "jit.gl.pass node @file taa.jxp @quality hi @accumulate 0.85"
 				}
 
 			}
@@ -323,7 +176,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 406.0, 920.5, 226.0, 22.0 ],
+					"patching_rect" : [ 364.0, 941.5, 226.0, 22.0 ],
 					"text" : "jit.gl.videoplane TAA @transform_reset 2"
 				}
 
@@ -338,7 +191,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 152.5, 719.0, 150.0, 22.0 ]
+					"patching_rect" : [ 58.5, 738.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -352,19 +205,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 152.5, 746.0, 150.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-51",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 518.0, 98.0, 69.0, 22.0 ],
-					"text" : "turn 0. 0. 1."
+					"patching_rect" : [ 58.5, 765.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -375,7 +216,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 839.0, 223.0, 80.0, 22.0 ],
+					"patching_rect" : [ 183.5, 403.0, 80.0, 22.0 ],
 					"text" : "loadmess 0.1"
 				}
 
@@ -389,7 +230,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 839.0, 254.0, 50.0, 22.0 ]
+					"patching_rect" : [ 183.5, 434.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -400,7 +241,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 839.0, 281.0, 113.0, 22.0 ],
+					"patching_rect" : [ 183.5, 461.0, 113.0, 22.0 ],
 					"text" : "prepend param grid"
 				}
 
@@ -412,7 +253,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 589.0, 168.0, 501.0, 22.0 ],
+					"patching_rect" : [ 58.5, 338.0, 501.0, 22.0 ],
 					"text" : "jit.gl.gridshape node @shader getGeometry @position 0. 0. -2. @shape torus @dim 100 100"
 				}
 
@@ -424,7 +265,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 714.0, 220.0, 43.0, 22.0 ],
+					"patching_rect" : [ 58.5, 400.0, 43.0, 22.0 ],
 					"text" : "r bang"
 				}
 
@@ -435,7 +276,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 260.5, 133.0, 45.0, 22.0 ],
+					"patching_rect" : [ 256.5, 174.0, 45.0, 22.0 ],
 					"text" : "s bang"
 				}
 
@@ -446,7 +287,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 88.5, 67.0, 59.0, 20.0 ],
+					"patching_rect" : [ 84.5, 108.0, 59.0, 20.0 ],
 					"text" : "1) enable"
 				}
 
@@ -458,7 +299,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 748.0, 98.0, 35.0, 22.0 ],
+					"patching_rect" : [ 217.5, 268.0, 35.0, 22.0 ],
 					"text" : "reset"
 				}
 
@@ -470,7 +311,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 748.0, 131.0, 69.0, 22.0 ],
+					"patching_rect" : [ 217.5, 301.0, 69.0, 22.0 ],
 					"text" : "jit.gl.handle"
 				}
 
@@ -482,7 +323,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 714.0, 281.0, 116.0, 22.0 ],
+					"patching_rect" : [ 58.5, 461.0, 116.0, 22.0 ],
 					"text" : "prepend param time"
 				}
 
@@ -494,7 +335,7 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "int", "", "", "int" ],
-					"patching_rect" : [ 714.0, 251.0, 61.0, 22.0 ],
+					"patching_rect" : [ 58.5, 431.0, 61.0, 22.0 ],
 					"text" : "counter"
 				}
 
@@ -506,7 +347,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 677.0, 98.0, 69.0, 22.0 ],
+					"patching_rect" : [ 146.5, 268.0, 69.0, 22.0 ],
 					"text" : "turn 0. 0. 0."
 				}
 
@@ -518,7 +359,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 589.0, 65.0, 58.0, 22.0 ],
+					"patching_rect" : [ 58.5, 235.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -530,7 +371,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 589.0, 98.0, 89.0, 22.0 ],
+					"patching_rect" : [ 58.5, 268.0, 89.0, 22.0 ],
 					"text" : "turn 0.8 0.4 0.6"
 				}
 
@@ -542,7 +383,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 589.0, 131.0, 76.0, 22.0 ],
+					"patching_rect" : [ 58.5, 301.0, 76.0, 22.0 ],
 					"text" : "jit.anim.drive"
 				}
 
@@ -554,7 +395,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_gl_texture", "", "" ],
-					"patching_rect" : [ 56.0, 198.0, 531.0, 22.0 ],
+					"patching_rect" : [ 58.5, 571.0, 531.0, 22.0 ],
 					"text" : "jit.gl.node TAA @name node @capture 3 @type float32 @name node @erase_color 1.6 1.5 1.5 1."
 				}
 
@@ -566,7 +407,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 714.0, 325.0, 309.0, 22.0 ],
+					"patching_rect" : [ 58.5, 505.0, 309.0, 22.0 ],
 					"text" : "jit.gl.shader @name getGeometry @file getGeometry.jxs"
 				}
 
@@ -579,7 +420,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 62.5, 65.0, 24.0, 24.0 ]
+					"patching_rect" : [ 58.5, 106.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -590,7 +431,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
-					"patching_rect" : [ 62.5, 102.0, 415.0, 22.0 ],
+					"patching_rect" : [ 58.5, 143.0, 415.0, 22.0 ],
 					"text" : "jit.world TAA @erase_color 1 1 1 1 @size 1000 800 @displaylink 1 @fps 60."
 				}
 
@@ -604,7 +445,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 825.0, 131.0, 150.0, 22.0 ]
+					"patching_rect" : [ 294.5, 301.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -639,13 +480,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-16", 0 ]
 				}
@@ -655,13 +489,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-18", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-69", 0 ],
-					"source" : [ "obj-19", 0 ]
 				}
 
 			}
@@ -723,13 +550,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
-					"source" : [ "obj-29", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-3", 0 ]
 				}
@@ -744,57 +564,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-43", 0 ],
-					"source" : [ "obj-33", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-36", 0 ],
-					"source" : [ "obj-34", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-38", 0 ],
-					"source" : [ "obj-36", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-41", 0 ],
-					"source" : [ "obj-37", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"source" : [ "obj-41", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"source" : [ "obj-43", 0 ]
 				}
 
 			}
@@ -807,78 +578,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-27", 0 ],
-					"source" : [ "obj-46", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-37", 0 ],
-					"source" : [ "obj-48", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-57", 0 ],
-					"source" : [ "obj-49", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-19", 0 ],
-					"source" : [ "obj-5", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"source" : [ "obj-51", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-67", 0 ],
-					"source" : [ "obj-57", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-64", 0 ],
-					"source" : [ "obj-58", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-69", 0 ],
-					"source" : [ "obj-64", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-69", 0 ],
-					"source" : [ "obj-67", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
 					"source" : [ "obj-69", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-58", 0 ],
-					"source" : [ "obj-70", 0 ]
 				}
 
 			}
