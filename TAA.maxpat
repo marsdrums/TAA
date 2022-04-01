@@ -63,11 +63,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-35",
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 533.0, 807.0, 188.0, 20.0 ],
-					"text" : "taa requires jit.gl.pass @quality hi"
+					"patching_rect" : [ 538.0, 794.0, 188.0, 48.0 ],
+					"text" : "taa requires:\njit.gl.node @capture 3 \njit.gl.pass @quality hi"
 				}
 
 			}
